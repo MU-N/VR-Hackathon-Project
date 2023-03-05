@@ -341,6 +341,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Scale",
+                    "type": "Button",
+                    "id": "b02abf77-72a0-488d-83fa-bd5f5a339e57",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -539,6 +548,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Is Tracked",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0a88c11a-e456-4d76-9e86-5b3499f9d652",
+                    "path": "<OculusTouchController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scale",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
