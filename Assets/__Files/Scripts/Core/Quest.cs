@@ -102,7 +102,7 @@ namespace VRHackathon.Core
         {
             SerializedProperty m_QuestInfoProperty;
             SerializedProperty m_QuestStatProperty;
-            List<string> m_QuestGoaLIype;
+            List<string> m_QuestGoaLType;
             SerializedProperty m_QuestGoalListProperty;
 
             [MenuItem("Assets/Quest", priority = 0)]
