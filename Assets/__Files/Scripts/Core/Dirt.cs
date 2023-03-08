@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Dirt : MonoBehaviour
 {
+    public int DirtN2Level;
+    public bool fertile;
     public bool wet;
     public bool seeded;
     public int seedType;

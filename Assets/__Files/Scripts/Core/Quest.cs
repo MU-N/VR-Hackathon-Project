@@ -118,12 +118,12 @@ namespace VRHackathon.Core
                 m_QuestGoalListProperty = serializedObject.FindProperty(nameof(Quest.Goals));
 
                 var lookup = typeof(Quest.QuestGoal);
-                m_QuestGoal = System.AppDomain.CurrentDomain.GetAssemblies() // Assem
+              /*  m_QuestGoal = System.AppDomain.CurrentDomain.GetAssemblies() // Assem
 SelectMany(assembly => assembly.GetTypes(0)
 Where(x aype => x.IsClass && Ix.IsAbstract && x.IsSubclassOf(Lookul
 .Select(type => type.Name) // IEnumerable<string >
 Custorm
-ToList O: // List<string>
+ToList O: // List<string> */
         }
         }
 #endif
