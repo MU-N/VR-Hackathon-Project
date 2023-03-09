@@ -21,12 +21,16 @@ public class Patrol : MonoBehaviour
 
     void Start()
     {
+       
         agent = GetComponent<NavMeshAgent>();
+
+
         animator = GetComponent<Animator>();
         animationCorotineWaitObject = new WaitForSeconds(animationCheckerDelay);
-      
+        NavMesh.avoidancePredictionTime = 0.5f;
 
-        GotoNextPoint();
+
+        GotoRandomPoint();
     }
 
 
@@ -49,16 +53,40 @@ public class Patrol : MonoBehaviour
         // cycling to the start if necessary.
         destPoint = (destPoint + 1) % points.Length;
     }
+    void GotoRandomPoint()
+    {
+        if (!agent.isOnNavMesh)
+            return;
+        agent.autoBraking = stop_Rest;
+        // Returns if no points have been set up
+        if (points.Length == 0)
+            return;
 
+        // Choose a random point from the array
+        int randomIndex = Random.Range(0, points.Length);
+        Vector3 randomPoint = points[randomIndex].position;
+
+        // Set the agent to go to the randomly selected destination.
+        agent.destination = randomPoint;
+
+        if (!animationCorotineIsWorking)
+        {
+            StartCoroutine(Walk_Stop_Animation());
+        }
+    }
 
     void Update()
     {
         if (!agent.isOnNavMesh)
             return;
-        // Choose the next destination point when the agent gets
+        agent.autoBraking = stop_Rest;
+
+        // Choose the next de
+        // stination point when the agent gets
         // close to the current one.
+
         if (!agent.pathPending && agent.remainingDistance < 0.5f)
-            GotoNextPoint();
+            GotoRandomPoint();
 
     
     }
