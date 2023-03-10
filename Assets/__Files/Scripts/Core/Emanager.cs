@@ -7,19 +7,16 @@ namespace VRHackathon
     public class Emanager : MonoBehaviour
     {
         public Material skyMat;
-        public float AtmosThickness;
-        public float FogThickness;
+
         // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+
+
 
         // Update is called once per frame
-        void Update()
+        public void ChangeEnviromentRender(float AtmosThickness,float fogThikness)
         {
             RenderSettings.skybox.SetFloat("_AtmosphereThickness", AtmosThickness);
-            RenderSettings.fogDensity = FogThickness;
+            RenderSettings.fogDensity = fogThikness;
         }
     }
 }

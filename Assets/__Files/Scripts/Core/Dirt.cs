@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,16 +18,27 @@ public class Dirt : MonoBehaviour
     public Material wetMat;
 
 
+    public static event Action BalanceEnviroment;
 
+    // Method that will be called when the tree is planted
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Water"))
         {
-            wet = true;
             Destroy(collision.gameObject);
+            if (wet|| !seeded)
+            {
+                return;
+            }
+            wet = true;
+           
             GetComponent<MeshRenderer>().material = wetMat;
             if(currTree)
-            currTree.GetComponent<Animator>().SetBool("Grow1", true);
+            {
+                currTree.GetComponent<Animator>().SetBool("Grow1", true);
+                BalanceEnviroment.Invoke();
+            }
+         
         }
 
         if (!seeded && collision.gameObject.CompareTag("Seed"))
